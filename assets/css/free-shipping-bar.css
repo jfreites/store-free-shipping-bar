@@ -1,0 +1,112 @@
+.sfsb-free-shipping-bar {
+	--sfsb-bg: #f6f2ee;
+	--sfsb-border: #dfd5cb;
+	--sfsb-text: #201a17;
+	--sfsb-muted: #6e625a;
+	--sfsb-track: #e9e1da;
+	--sfsb-fill: #1f8f63;
+	--sfsb-fill-complete: #0f6f4b;
+	--sfsb-marker: #201a17;
+	--sfsb-radius: 16px;
+	--sfsb-height: 10px;
+	background: var(--sfsb-bg);
+	border: 1px solid var(--sfsb-border);
+	border-radius: var(--sfsb-radius);
+	color: var(--sfsb-text);
+	margin: 0 0 16px;
+	padding: 16px;
+}
+
+.sfsb-free-shipping-bar__inner {
+	display: grid;
+	gap: 10px;
+}
+
+.sfsb-free-shipping-bar__message {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	margin: 0;
+}
+
+.sfsb-free-shipping-bar__track {
+	background: var(--sfsb-track);
+	border-radius: 999px;
+	height: var(--sfsb-height);
+	overflow: hidden;
+	position: relative;
+}
+
+.sfsb-free-shipping-bar__fill {
+	background: linear-gradient(90deg, var(--sfsb-fill) 0%, #4dc891 100%);
+	border-radius: inherit;
+	display: block;
+	height: 100%;
+	transition: width 0.25s ease;
+	width: 0;
+}
+
+.sfsb-free-shipping-bar.is-complete .sfsb-free-shipping-bar__fill {
+	background: linear-gradient(90deg, var(--sfsb-fill-complete) 0%, var(--sfsb-fill) 100%);
+}
+
+.sfsb-free-shipping-bar__meta {
+	color: var(--sfsb-muted);
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 12px;
+	gap: 12px;
+	justify-content: space-between;
+}
+
+.sfsb-free-shipping-bar__milestones {
+	min-height: 18px;
+	position: relative;
+}
+
+.sfsb-free-shipping-bar__milestone {
+	position: absolute;
+	top: 0;
+	transform: translateX(-50%);
+}
+
+.sfsb-free-shipping-bar__milestone::before {
+	background: var(--sfsb-marker);
+	border-radius: 999px;
+	content: '';
+	display: block;
+	height: 8px;
+	margin: 0 auto 4px;
+	opacity: 0.35;
+	width: 8px;
+}
+
+.sfsb-free-shipping-bar__milestone.is-reached::before {
+	opacity: 1;
+}
+
+.sfsb-free-shipping-bar__milestone-label {
+	color: var(--sfsb-muted);
+	display: block;
+	font-size: 10px;
+	white-space: nowrap;
+}
+
+.sfsb-free-shipping-bar.is-empty .sfsb-free-shipping-bar__fill {
+	width: 0 !important;
+}
+
+@media (max-width: 640px) {
+	.sfsb-free-shipping-bar {
+		padding: 14px;
+	}
+
+	.sfsb-free-shipping-bar__meta {
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.sfsb-free-shipping-bar__milestone-label {
+		font-size: 9px;
+	}
+}
